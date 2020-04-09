@@ -20,6 +20,12 @@ function unicodeToChar(text) {
   });
 }
 
+function randomString(length, chars) {
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+    return result;
+}
+
 client.on("ready", () => {
   console.log("I am now active.");
   client.user.setActivity("b!help", { type: "LISTENING" });
@@ -64,7 +70,7 @@ client.on("message", message => {
 	if(message.member.roles.cache.find(role => role.name === 'Verified')){
 		check = true;
 	}
-	if(check == false){
+	if(check == true){
 		const embed = {
           title: "Error",
           description:
@@ -77,7 +83,7 @@ client.on("message", message => {
 	var getad = {};
     getad["name"] = message.author.id;
     getad["uid"] = userid;
-	getad["code"] = code;
+	getad["code"] = randomString(10, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
     verify.push(getad);
     const embed = {
       title: "Verify: " + message.author.tag,
@@ -94,6 +100,7 @@ client.on("message", message => {
         var userid = verify[i].uid;
         confirmcode(userid).then(res => {
           var data = res;
+		  var code = verify[i].code;
 		  if(data.indexOf(code) == -1){
 			  const embed = {
 				title: "Error",
