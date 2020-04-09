@@ -59,7 +59,6 @@ client.on("message", message => {
   
   if (command == "start") {
 	var check = false;
-	var username;
 	var userid = args[0];
     for (var i = 0; i < verify.length; i++) {
       if (verify[i].name == message.author.id) {
@@ -73,13 +72,6 @@ client.on("message", message => {
 	if(userid == undefined){
 		check = true;
 	}
-	confirmu(userid).then(res => {
-		if(res.content == "Error"){
-			check = true;
-		}else{
-		    username = res.user;
-		}
-	})
 	if(check == true){
 		const embed = {
           title: "Error",
@@ -90,19 +82,33 @@ client.on("message", message => {
         message.channel.send({ embed });
 		return;
 	}else{
-	var getad = {};
-	var code = randomString(10, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-    getad["name"] = message.author.id;
-    getad["uid"] = userid;
-	getad["code"] = code;
-    verify.push(getad);
-    const embed = {
-      title: "Verify: " + username,
-      description:
-        "**Please put this code into your Bio/Desc: "+code+"**",
-      color: 1030394
-    };
-    message.channel.send({ embed });
+	confirmu(userid).then(res => {
+		if(res.content == "Error"){
+			const embed = {
+			title: "Error",
+			description:
+				"**You are already verified or are currently in the process of verifying.\nThis error can also be caused by an invalid ID.**",
+			color: 16732031
+        };
+        message.channel.send({ embed });
+		return;
+		}else{
+		    var username = res.user;
+			var getad = {};
+			var code = randomString(10, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+			getad["name"] = message.author.id;
+			getad["uid"] = userid;
+			getad["code"] = code;
+			verify.push(getad);
+			const embed = {
+				title: "Verify: " + username,
+				description:
+					"**Please put this code into your Bio/Desc: "+code+"**",
+				color: 1030394
+			};
+			message.channel.send({ embed });
+		}
+	})
 	}
   }
   if (command == "confirm") {
