@@ -86,14 +86,15 @@ client.on("message", message => {
 		return;
 	}else{
 	var getad = {};
+	var code = randomString(10, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
     getad["name"] = message.author.id;
     getad["uid"] = userid;
-	getad["code"] = randomString(10, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+	getad["code"] = code;
     verify.push(getad);
     const embed = {
       title: "Verify: " + message.author.tag,
       description:
-        "**W.I.P**",
+        "**Please put this code into your Bio/Desc: "+code+"**",
       color: 1030394
     };
     message.channel.send({ embed });
