@@ -71,7 +71,7 @@ client.on("message", message => {
 		check = true;
 	}
 	confirmu(userid).then(res => {
-		if(res == "Error"){
+		if(res.content == "Error"){
 			check = true;
 		}else{
 		    username = res.user;
