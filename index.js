@@ -9,7 +9,7 @@ async function confirmu(uid) {
   if (res.length == 0) {
     return false;
   } else {
-    return res.data.content;
+    return res.data;
   }
 }
 
