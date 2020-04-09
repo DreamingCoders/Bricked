@@ -59,6 +59,7 @@ client.on("message", message => {
   
   if (command == "start") {
 	var check = false;
+	var username;
 	var userid = args[0];
     for (var i = 0; i < verify.length; i++) {
       if (verify[i].name == message.author.id) {
@@ -72,6 +73,8 @@ client.on("message", message => {
 	confirmu(userid).then(res => {
 		if(res == "Error"){
 			check = true;
+		}else{
+		    username = res.user;
 		}
 	})
 	if(check == true){
@@ -91,7 +94,7 @@ client.on("message", message => {
 	getad["code"] = code;
     verify.push(getad);
     const embed = {
-      title: "Verify: " + message.author.tag,
+      title: "Verify: " + username,
       description:
         "**Please put this code into your Bio/Desc: "+code+"**",
       color: 1030394
