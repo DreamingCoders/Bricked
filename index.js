@@ -121,6 +121,7 @@ client.on("message", message => {
 			  return;
 		  }
 		  message.member.roles.add("689281307087470628");
+		  message.member.setNickname(user);
           const embed = {
             title: "Succesfully Confirmed: " + user,
             description:
