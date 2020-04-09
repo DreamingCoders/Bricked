@@ -5,7 +5,7 @@ const client = new Discord.Client();
 
 var verify = [];
 
-async function confirmcode(uid) {
+async function confirmu(uid) {
   const res = await axios.get(`https://bprewritten.net/api/desc.php?id=${uid}`);
   if (res.length == 0) {
     return false;
@@ -70,11 +70,16 @@ client.on("message", message => {
 	if(message.member.roles.cache.find(role => role.name === 'Verified')){
 		check = true;
 	}
+	confirmu(userid).then(res => {
+		if(res == "Error"){
+			check = true;
+		}
+	})
 	if(check == true){
 		const embed = {
           title: "Error",
           description:
-            "**You are already verified or are currently in the process of verifying**",
+            "**You are already verified or are currently in the process of verifying.\nThis error can also be caused by an invalid ID.**",
           color: 16732031
         };
         message.channel.send({ embed });
@@ -98,7 +103,7 @@ client.on("message", message => {
     for (var i = 0; i < verify.length; i++) {
       if (verify[i].name == message.author.id) {
         var userid = verify[i].uid;
-        confirmcode(userid).then(res => {
+        confirmu(userid).then(res => {
           var data = res;
 		  var code = verify[i].code;
 		  if(data.indexOf(code) == -1){
