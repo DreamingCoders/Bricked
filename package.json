@@ -1,0 +1,27 @@
+{
+  "name": "bpr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LordDamionDevil/bpr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LordDamionDevil/bpr/issues"
+  },
+  "homepage": "https://github.com/LordDamionDevil/bpr#readme",
+  "dependencies": {
+    "discord.js": "^12.0.1",
+    "axios": "^0.19.2"
+  },
+  "engines": {
+    "node": "12.13.1"
+  }
+}
