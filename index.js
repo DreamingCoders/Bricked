@@ -104,7 +104,8 @@ client.on("message", message => {
       if (verify[i].name == message.author.id) {
         var userid = verify[i].uid;
         confirmu(userid).then(res => {
-          var data = res;
+          var data = res.content;
+		  var user = res.user;
 		  var code = verify[i].code;
 		  if(data.indexOf(code) == -1){
 			  const embed = {
@@ -117,10 +118,11 @@ client.on("message", message => {
 			  return;
 		  }
           var user = verify[i].name;
+		  message.member.roles.add("689281307087470628");
           const embed = {
-            title: "Succesfully Confirmed: " + message.author.tag,
+            title: "Succesfully Confirmed: " + user,
             description:
-              "**W.I.P**",
+              "You have now been granted the Verified role.",
             color: 1030394,
             thumbnail: { url: "https://bprewritten.net/storage/avatars/thumb/"+userid+".png" }
           };
