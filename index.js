@@ -117,7 +117,6 @@ client.on("message", message => {
 			  message.channel.send({ embed });
 			  return;
 		  }
-          var user = verify[i].name;
 		  message.member.roles.add("689281307087470628");
           const embed = {
             title: "Succesfully Confirmed: " + user,
