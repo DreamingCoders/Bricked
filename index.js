@@ -132,4 +132,4 @@ client.on("message", message => {
   }
 });
 
-client.login(process.env.CLIENT_KEY);
+client.login("Njk3OTI2NTM2MzYzNTA3Nzkz.Xo-Yxg.LtYbPy2pwxrcUyzAgNOkU1APdsk");
