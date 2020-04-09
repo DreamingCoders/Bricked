@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const axios = require("axios");
-const os = require("os");
 const client = new Discord.Client();
 
 var verify = [];
