@@ -70,6 +70,9 @@ client.on("message", message => {
 	if(message.member.roles.cache.find(role => role.name === 'Verified')){
 		check = true;
 	}
+	if(userid == undefined){
+		check = true;
+	}
 	confirmu(userid).then(res => {
 		if(res.content == "Error"){
 			check = true;
