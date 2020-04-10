@@ -168,7 +168,7 @@ client.on("message", message => {
             description:
               "You have successfully cancelled the verification process.",
             color: 1030394
-          };
+       };
        message.channel.send({ embed });
   }
 });
