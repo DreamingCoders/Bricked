@@ -46,7 +46,7 @@ client.on("message", message => {
 	const embed = {
       title: "BPR Help",
       description:
-        "**b!start (userid): Start Verifying.\nb!confirm: Confirm the code.**",
+        "**b!start (userid): Start Verifying.\nb!confirm: Confirm the code.\nb!cancel: Cancel Process.**",
       color: 16185871,
       thumbnail: { url: client.user.displayAvatarURL() }
     };
@@ -87,7 +87,7 @@ client.on("message", message => {
 			const embed = {
 			title: "Error",
 			description:
-				"**You are already verified or are currently in the process of verifying.\nThis error can also be caused by an invalid ID.**",
+				"**Seems like you used an invalid ID.**",
 			color: 16732031
         };
         message.channel.send({ embed });
@@ -123,7 +123,7 @@ client.on("message", message => {
 			  const embed = {
 				title: "Error",
 				description:
-					"**Please run b!start (userid) first!**",
+					"**It seems like you have the wrong code in your bio!**",
 				color: 16732031
 			  };
 			  message.channel.send({ embed });
@@ -143,6 +143,33 @@ client.on("message", message => {
         break;
       }
     }
+  }
+  if(command == "cancel"){
+	  var check = false;
+	  for (var i = 0; i < verify.length; i++) {
+		if (verify[i].name == message.author.id) {
+			verify.splice(i, 1);
+			check = true;
+			break;
+		}
+	  }
+	  if(check == true){
+		  const embed = {
+				title: "Error",
+				description:
+					"**You are currently not in the process of verifying**",
+				color: 16732031
+		   };
+		   message.channel.send({ embed });
+		   return;
+	  }
+	  const embed = {
+            title: "Succesfully cancelled verification",
+            description:
+              "You have successfully cancelled the verification process.",
+            color: 1030394
+          };
+       message.channel.send({ embed });
   }
 });
 
