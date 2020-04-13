@@ -38,7 +38,7 @@ client.on("message", message => {
 
   if(command == "help" && message.channel.permissionsFor(client.user).has([ "VIEW_CHANNEL", "SEND_MESSAGES" ])){
 	const embed = {
-      title: "BPR Help",
+      title: "Bricked Help",
       description:
         "**b!start (userid): Start Verifying.\nb!confirm: Confirm the code.\nb!cancel: Cancel Process.**",
       color: 16185871,
