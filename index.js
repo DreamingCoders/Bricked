@@ -13,12 +13,6 @@ async function confirmu(uid) {
   }
 }
 
-function unicodeToChar(text) {
-  return text.replace(/\\u[\dA-F]{4}/gi, function(match) {
-    return String.fromCharCode(parseInt(match.replace(/\\u/g, ""), 16));
-  });
-}
-
 function randomString(length, chars) {
     var result = '';
     for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
