@@ -5,7 +5,7 @@ const client = new Discord.Client();
 var verify = [];
 
 async function confirmu(uid) {
-  const res = await axios.get(`https://bprewritten.net/api/desc.php?id=${uid}`);
+  const res = await axios.get(`https://bricked.nl/api/desc.php?id=${uid}`);
   if (res.length == 0) {
     return false;
   } else {
@@ -136,7 +136,7 @@ client.on("message", message => {
             description:
               "You have now been granted the Verified role.",
             color: 1030394,
-            thumbnail: { url: "https://bprewritten.net/storage/avatars/thumb/"+userid+".png" }
+            thumbnail: { url: "https://cdn.bricked.nl/storage/avatars/thumb/"+userid+".png" }
           };
           message.channel.send({ embed });
         });
