@@ -63,9 +63,6 @@ client.on("message", message => {
 	if(message.member.roles.cache.find(role => role.name === 'Verified')){
 		check = true;
 	}
-	if(userid == undefined){
-		check = true;
-	}
 	if(check == true){
 		const embed = {
           title: "Error",
